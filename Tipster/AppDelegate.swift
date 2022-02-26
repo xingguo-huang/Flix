@@ -9,10 +9,17 @@ import UIKit
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
-
+    
+////    the following method is copied from stackoverflow to extend the launch screen time when starting
+//    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+//            Thread.sleep(forTimeInterval: 3.0)
+//            // Override point for customization after application launch.
+//            return true
+//        }
+//    the above method is copied from stackoverflow to extend the launch screen time when starting
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        Thread.sleep(forTimeInterval: 1.0)  //to extend the launch screen time when starting
         // Override point for customization after application launch.
         return true
     }
