@@ -65,6 +65,7 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
 //        cell.textLabel!.text = title // "row: \(indexPath.row)" important note: Flix-TableView setup 6'18''
         cell.titleLabel.text = title
         cell.synopsisLabel.text = synopsis
+//        cell.synopsisLabel.sizeToFit()
         
         let baseUrl = "https://image.tmdb.org/t/p/w185"
         let posterPath = movie["poster_path"] as! String
@@ -74,6 +75,18 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         
         return cell
     }
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Find the selected movie
+        let cell = sender as! UITableViewCell
+        let indexPath = tableView.indexPath(for: cell)!
+        let movie = movies[indexPath.row]
+        
+        // pass the selected movie to the details view controller
+        let detailViewController = segue.destination as! MovieDetailsViewController
+        detailViewController.movie = movie
+        
+        tableView.deselectRow(at: indexPath, animated: true) // to deselect the grayed movie
+        
+    }
     
 }
